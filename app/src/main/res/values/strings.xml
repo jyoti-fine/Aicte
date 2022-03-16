@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Aicte_App</string>
+
+    <string-array name="year">
+        <item>2020-2021</item>
+        <item>2019-2020</item>
+        <item>2018-2019</item>
+        <item>2017-2018</item>
+        <item>2016-2017</item>
+    </string-array>
+
+    <string-array name="level">
+        <item>PG</item>
+        <item>UG</item>
+        <item>DIPLOMA</item>
+    </string-array>
+
+    <string-array name="state">
+        <item>Andra Pradesh</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Rajasthan</item>
+        <item>West Bengal</item>
+    </string-array>
+
+    <string-array name="program">
+        <item>Applied Arts and Crafts</item>
+        <item>Architecture</item>
+        <item>Design</item>
+        <item>MCA</item>
+        <item>Engineering and Technology</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>Private</item>
+        <item>Central University</item>
+        <item>Deemed to be University</item>
+        <item>Government</item>
+    </string-array>
+
+    <string name="aicte_approved_institutes_for_the_academic_year_2021_2021">AICTE Approved Institutes for the Academic Year: 2021-2021</string>
+    <string name="search">Search</string>
+    <string name="state">State</string>
+    <string name="college_name">College Name</string>
+    <string name="option">Option</string>
+</resources>

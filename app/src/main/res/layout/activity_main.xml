@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="10dp"
+        android:text="@string/aicte_approved_institutes_for_the_academic_year_2021_2021"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FF0000"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinner_year"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/heading"
+        android:padding="15dp"
+        android:background="#ffe5b4"/>
+
+
+    <Spinner
+        android:id="@+id/spinner_level"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/spinner_year"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:background="#ffe5b4"/>
+
+    <Spinner
+        android:id="@+id/spinner_state"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/spinner_level"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:background="#ffe5b4"/>
+
+    <Spinner
+        android:id="@+id/spinner_program"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/spinner_state"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:background="#ffe5b4"/>
+
+    <Spinner
+        android:id="@+id/spinner_type"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/spinner_program"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:background="#ffe5b4"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/search"
+        android:id="@+id/clg_search_btn"
+        android:layout_below="@+id/spinner_type"
+
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/clg_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/clg_search_btn"
+
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+</RelativeLayout>

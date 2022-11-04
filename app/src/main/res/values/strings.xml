@@ -2,6 +2,7 @@
     <string name="app_name">Aicte_App</string>
 
     <string-array name="year">
+        <item>2021-2022</item>
         <item>2020-2021</item>
         <item>2019-2020</item>
         <item>2018-2019</item>
@@ -10,32 +11,69 @@
     </string-array>
 
     <string-array name="level">
+        <item>[--All--]</item>
         <item>PG</item>
         <item>UG</item>
-        <item>DIPLOMA</item>
+        <item>Diploma</item>
     </string-array>
 
     <string-array name="state">
-        <item>Andra Pradesh</item>
+        <item>[--All--]</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
         <item>Bihar</item>
         <item>Chandigarh</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Kerala</item>
+        <item>Maharashtra</item>
         <item>Rajasthan</item>
         <item>West Bengal</item>
     </string-array>
 
     <string-array name="program">
+        <item>[--All--]</item>
         <item>Applied Arts and Crafts</item>
+        <item>Architecture and Town Planning</item>
+        <item>Architecture and Planning</item>
         <item>Architecture</item>
+        <item>Planning</item>
         <item>Design</item>
-        <item>MCA</item>
+        <item>Town Planning</item>
         <item>Engineering and Technology</item>
+        <item>Management</item>
+        <item>MCA</item>
+        <item>Pharmacy</item>
+        <item>Hotel Management and Catering</item>
     </string-array>
 
     <string-array name="type">
+        <item>[--All--]</item>
         <item>Private</item>
         <item>Central University</item>
-        <item>Deemed to be University</item>
+        <item>Deemed to be University(Govt)</item>
+        <item>Deemed to be University(Pvt)</item>
+        <item>Deemed University(Government)</item>
+        <item>Deemed University(Private)</item>
         <item>Government</item>
+        <item>Govt aided</item>
+        <item>Private-Aided</item>
+        <item>Private-Self Financing</item>
+        <item>State Government University</item>
+        <item>State Private University</item>
+        <item>Unaided - Private</item>
+        <item>University Managed</item>
+        <item>University Managed-Govt</item>
+        <item>University Managed-Private</item>
+    </string-array>
+
+    <string-array name="schemes">
+        <item>Student Development Schemes</item>
+        <item>Faculty Development Schemes</item>
+        <item>Institutional Development Schemes</item>
+        <item>Research And Innovations Development Schemes</item>
+        <item>General Schemes</item>
+
     </string-array>
 
     <string name="aicte_approved_institutes_for_the_academic_year_2021_2021">AICTE Approved Institutes for the Academic Year: 2021-2021</string>
@@ -43,4 +81,71 @@
     <string name="state">State</string>
     <string name="college_name">College Name</string>
     <string name="option">Option</string>
+    <string name="initiatives_schemes"><![CDATA[Initiatives & Schemes]]></string>
+    <string name="initiative_or_scheme">Initiative Or Scheme</string>
+    <string name="year">Year:</string>
+    <string name="select_level">Select Level:</string>
+    <string name="select_program">Select Program</string>
+    <string name="institution_type">Institution Type:</string>
+    <string name="username">UserName</string>
+    <string name="log_in">Log In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="what_is_your_favourite_place">What is your Favourite Place?</string>
+    <string name="what_is_your_pet_s_name">What is your Pet\'s name?</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">aicte.search@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_setting">Setting</string>
+    <string name="see_statistics">See Statistics</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="initiatives">Initiatives</string>
+    <string name="rule">Rule</string>
+    <string name="unapproved_colleges">UnApproved Colleges</string>
+    <string name="list_of_rules_and_regulations_notified_by_the_council">List of Rules and regulations notified by the Council</string>
+    <string name="notification_message">"Hello %1s! Your account has been created successfully."</string>
+
+
+    <string-array name="enterScheme">
+        <item>Apply for Grant</item>
+        <item>Free Courses for Empowerment</item>
+        <item>Mentorship</item>
+        <item>Contact to Incubation</item>
+    </string-array>
+
+    <string-array name="enterChoice1">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
+    <string-array name="enterChoice2">
+        <item>Agricultural Development</item>
+        <item>Women Empowerment</item>
+        <item>Enviornmental</item>
+        <item>Technical</item>
+    </string-array>
+
+    <string-array name="enterChoice3">
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+    </string-array>
+
+    <string-array name="enterChoice4">
+        <item>M</item>
+        <item>N</item>
+        <item>P</item>
+        <item>Q</item>
+    </string-array>
 </resources>

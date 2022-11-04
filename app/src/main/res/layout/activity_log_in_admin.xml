@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogInAdmin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Sign Up For Admins"
+        android:textAlignment="center"
+        android:id="@+id/adminTitle"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="40sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Enter UID: "
+        android:textAlignment="center"
+        android:id="@+id/adminUID"
+        android:layout_marginTop="100dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@+id/adminTitle"
+        android:background="@color/purple_200"
+        />
+
+    <EditText
+        android:id="@+id/editUID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adminUID"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/inputs_design"
+        android:hint="UID"
+        android:inputType="text"
+        android:padding="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Enter Password: "
+        android:textAlignment="center"
+        android:id="@+id/adminPass"
+        android:layout_marginTop="100dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@+id/editUID"
+        android:background="@color/purple_200"
+        />
+
+    <EditText
+        android:id="@+id/editPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adminPass"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/inputs_design"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editPass"
+        android:layout_marginTop="50dp"
+        android:text="Submit"
+
+        />
+
+</RelativeLayout>

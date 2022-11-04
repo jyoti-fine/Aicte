@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RulesAndRegulationsActivity">
+
+        <TextView
+            android:id="@+id/rules_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/list_of_rules_and_regulations_notified_by_the_council"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+
+        />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@+id/rules_title"
+            tools:context=".MainActivity"
+            android:id="@+id/recyclerViewRules"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:background="@color/white"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+        </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

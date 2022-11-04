@@ -1,19 +1,13 @@
 package com.example.aicte_app
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.aicte_app.daos.CollegeDao
-import com.example.aicte_app.models.Colleges
-import com.example.aicte_app.viewHolder.CollegeViewHolder
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.Query
 
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -24,34 +18,24 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var state:String
     private lateinit var program:String
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var layoutManager: LinearLayoutManager
-    private lateinit var collegeDao: CollegeDao
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        recyclerView=findViewById(R.id.clg_recycler_view)
-        recyclerView.setHasFixedSize(true)
-        layoutManager= LinearLayoutManager(this)
-        recyclerView.layoutManager=layoutManager
-
-
-        val spinnerYear: Spinner =findViewById(R.id.spinner_year)
-        var adapter : ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this,
-            R.array.year,android.R.layout.simple_spinner_dropdown_item)
+        val spinnerYear :Spinner=findViewById(R.id.spinner_year)
+        var adapter : ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this, R.array.year,
+           R.layout.spinner_item_view)
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
         spinnerYear.adapter=adapter
         spinnerYear.onItemSelectedListener = this
 
+
         val spinnerLevel: Spinner =findViewById(R.id.spinner_level)
         adapter = ArrayAdapter.createFromResource(this, R.array.level,
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_item_view)
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
         spinnerLevel.adapter=adapter
@@ -60,7 +44,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         val spinnerState: Spinner =findViewById(R.id.spinner_state)
         adapter = ArrayAdapter.createFromResource(this, R.array.state,
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_item_view)
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
         spinnerState.adapter=adapter
@@ -69,7 +53,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         val spinnerProgram: Spinner =findViewById(R.id.spinner_program)
         adapter = ArrayAdapter.createFromResource(this, R.array.program,
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_item_view)
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
         spinnerProgram.adapter=adapter
@@ -77,7 +61,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         val spinnerType: Spinner =findViewById(R.id.spinner_type)
         adapter = ArrayAdapter.createFromResource(this, R.array.type,
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_item_view)
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
         spinnerType.adapter=adapter
@@ -86,128 +70,44 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val searchBtn: Button =findViewById(R.id.clg_search_btn)
 
         searchBtn.setOnClickListener{
-            searchColleges()
+
+            val bundle = Bundle()
+
+            bundle.putString("year",year)
+            bundle.putString("level",level)
+            bundle.putString("type",type)
+            bundle.putString("state",state)
+            bundle.putString("program",program)
+
+            val intent = Intent(this@MainActivity,SearchCollegesActivity::class.java)
+            intent.putExtras(bundle);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
+
+        }
+
+        val statBtn: Button =findViewById(R.id.clg_stat)
+
+        statBtn.setOnClickListener{
+            val intent = Intent(this@MainActivity, StatActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
+        }
+
+        val unApprovedBtn: Button = findViewById(R.id.clg_unapproved)
+        unApprovedBtn.setOnClickListener{
+            val intent = Intent(this@MainActivity, UnApprovedCollegeActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
+
         }
 
 
     }
 
-
-
-    private fun searchColleges() {
-
-        if(year!=null)
-        {
-            if(level!=null)
-            {
-                if(state!=null)
-                {
-                    if(program!=null)
-                    {
-                        if(type!=null)
-                        {
-                            searchCollegesWithFilters(year,level,state,program,type)
-                        }
-                        else
-                        {
-                            Toast.makeText(this,"Please Select the Type",Toast.LENGTH_LONG).show()
-                        }
-                    }
-                    else
-                    {
-                        Toast.makeText(this,"Please Select the Program",Toast.LENGTH_LONG).show()
-                    }
-                }
-                else
-                {
-                    Toast.makeText(this,"Please Select the State",Toast.LENGTH_LONG).show()
-                }
-            }
-            else
-            {
-                Toast.makeText(this,"Please Select the Level",Toast.LENGTH_LONG).show()
-            }
-        }
-        else
-        {
-            Toast.makeText(this,"Please Select the Year",Toast.LENGTH_LONG).show()
-        }
-    }
-
-    private fun searchCollegesWithFilters(year: String, level: String, state: String, program: String, type: String) {
-
-        collegeDao = CollegeDao()
-        val collegeCollections = collegeDao.collegeCollections
-
-        val query :Query = collegeCollections.whereEqualTo("year",year).whereEqualTo("state",state)
-
-
-        val options: FirestoreRecyclerOptions<Colleges> = FirestoreRecyclerOptions.Builder<Colleges>()
-            .setQuery(query, Colleges::class.java)
-            .build()
-
-
-        val adapter: FirestoreRecyclerAdapter<Colleges, CollegeViewHolder> = object :FirestoreRecyclerAdapter<Colleges, CollegeViewHolder>(options)
-        {
-            override fun onBindViewHolder(holder: CollegeViewHolder, p1: Int, model: Colleges)
-            {
-                holder.clgName.text = model.name
-                holder.clgstate.text = model.state
-            }
-
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollegeViewHolder {
-                val view:View = LayoutInflater.from(parent.context).inflate(R.layout.colleges_item_view, parent, false)
-                return CollegeViewHolder(view)
-            }
-        }
-
-        recyclerView.adapter = adapter
-        adapter.startListening()
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        setUpRecyclerView()
-
-    }
-
-    private fun setUpRecyclerView()
-    {
-
-        collegeDao = CollegeDao()
-        val collegeCollections = collegeDao.collegeCollections
-
-        val query = collegeCollections.orderBy("year", Query.Direction.DESCENDING)
-
-
-        val options: FirestoreRecyclerOptions<Colleges> = FirestoreRecyclerOptions.Builder<Colleges>()
-            .setQuery(query, Colleges::class.java)
-            .build()
-
-
-        val adapter: FirestoreRecyclerAdapter<Colleges, CollegeViewHolder> = object :FirestoreRecyclerAdapter<Colleges, CollegeViewHolder>(options)
-        {
-            override fun onBindViewHolder(holder: CollegeViewHolder, p1: Int, model: Colleges)
-            {
-                holder.clgName.text = model.name
-                holder.clgstate.text = model.state
-            }
-
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollegeViewHolder {
-                val view:View = LayoutInflater.from(parent.context).inflate(R.layout.colleges_item_view, parent, false)
-                return CollegeViewHolder(view)
-            }
-        }
-
-        recyclerView.adapter = adapter
-        adapter.startListening()
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
 
     override fun onItemSelected(parent: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         if (parent != null) {

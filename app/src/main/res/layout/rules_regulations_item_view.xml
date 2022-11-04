@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_height="100dp"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:padding="5dp"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:layout_height="60dp"
+        android:layout_width="60dp"
+        android:id="@+id/rules_icon"
+        android:src="@android:drawable/ic_menu_send"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/rules_title"
+        android:padding="9dp"
+        android:textColor="@color/design_default_color_error"
+        android:text="This is Demo Text"
+        android:textSize="20dp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
